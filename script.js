@@ -19,7 +19,7 @@ function startMemeTimer() {
 startMemeTimer();
 
 // Dodge Logic
-noBtn.addEventListener('mouseenter', () => {
+const dodge = (e) => {
     noCount++;
     
     if (noCount >= MAX_NO) {
@@ -28,17 +28,34 @@ noBtn.addEventListener('mouseenter', () => {
     }
 
     if (noBtn.parentElement !== document.body) {
+        // Capture current position before moving to prevent jump
+        const rect = noBtn.getBoundingClientRect();
         document.body.appendChild(noBtn);
+        noBtn.style.position = 'fixed';
+        noBtn.style.left = `${rect.left}px`;
+        noBtn.style.top = `${rect.top}px`;
+        noBtn.style.margin = '0';
     }
 
-    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+    // Calculate safe random coordinates
+    const buttonWidth = noBtn.offsetWidth;
+    const buttonHeight = noBtn.offsetHeight;
     
-    noBtn.style.position = 'fixed';
+    // Ensure we don't land exactly where the touch/mouse is (add buffer)
+    const x = Math.random() * (window.innerWidth - buttonWidth);
+    const y = Math.random() * (window.innerHeight - buttonHeight);
+    
     noBtn.style.left = `${x}px`;
     noBtn.style.top = `${y}px`;
-    noBtn.style.margin = '0'; // Ensure no layout shifts
-});
+    
+    // Prevent standard click/tap on mobile after dodging
+    if (e.type === 'touchstart') {
+        e.preventDefault();
+    }
+};
+
+noBtn.addEventListener('mouseenter', dodge);
+noBtn.addEventListener('touchstart', dodge, { passive: false });
 
 // Yes Logic
 yesBtn.addEventListener('click', () => {
