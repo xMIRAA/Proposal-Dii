@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Making it Official ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div id="particles-container"></div>
+    
+    <main class="glass-card" id="main-content">
+        <div class="content-wrapper">
+            <div class="icon-header">
+                <div class="heart-pulse">❤️</div>
+            </div>
+            <h1 id="question-text">Can we finally make it official?</h1>
+            <p id="sub-text">The wait is killing me! ✨</p>
+            
+            <div class="button-group">
+                <button id="yes-btn" class="btn primary">YES</button>
+                <button id="no-btn" class="btn secondary">No</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="meme-overlay" class="hidden">
+        <div class="meme-container">
+            <img src="cat-meme.png" alt="Meme Cat" id="meme-img">
+            <h2 id="meme-text">don't trynna mess with me</h2>
+            <button id="back-btn" class="btn primary">Okay, sorry!</button>
+        </div>
+    </div>
+
+    <div id="success-screen" class="hidden">
+        <div class="success-content">
+            <div class="success-icon">🥂</div>
+            <h1>IT'S OFFICIAL! ❤️</h1>
+            <p>I knew you'd say yes! You're officially stuck with me now.</p>
+            <div class="romantic-message">"Our forever starts today."</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
